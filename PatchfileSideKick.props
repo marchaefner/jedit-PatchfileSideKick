@@ -1,0 +1,17 @@
+plugin.sidekick.patchfile.PatchfileSideKickPlugin.activate=defer
+plugin.sidekick.patchfile.PatchfileSideKickPlugin.name=PatchfileSideKick
+plugin.sidekick.patchfile.PatchfileSideKickPlugin.version=1.0
+plugin.sidekick.patchfile.PatchfileSideKickPlugin.author=Marc H&auml;fner
+plugin.sidekick.patchfile.PatchfileSideKickPlugin.description=Patchfile parser for SideKick
+plugin.sidekick.patchfile.PatchfileSideKickPlugin.docs=index.html
+
+# dependencies
+plugin.sidekick.patchfile.PatchfileSideKickPlugin.depend.0=jdk 1.6
+plugin.sidekick.patchfile.PatchfileSideKickPlugin.depend.1=jedit 05.00.99.00
+plugin.sidekick.patchfile.PatchfileSideKickPlugin.depend.2=plugin sidekick.SideKickPlugin 1.4
+plugin.sidekick.patchfile.PatchfileSideKickPlugin.depend.3=plugin errorlist.ErrorListPlugin 2.1
+
+# registration with SideKick as a mode parser
+sidekick.parser.patchfile.label=patch
+mode.patch.sidekick.parser=patchfile
+

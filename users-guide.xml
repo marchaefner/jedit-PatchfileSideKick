@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<book xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation='http://www.docbook.org/xsd/4.4/docbook.xsd' >
+<!-- :indentSize=2:tabSize=2:noTabs=true: -->
+<bookinfo>
+  <title>Patchfile SideKick Plugin Guide</title>
+  <authorgroup>
+    <author><firstname>Marc</firstname><surname>Häfner</surname></author>
+  </authorgroup>
+
+  <legalnotice>
+    <title>Legal Notice</title>
+    <para>
+      Permission is granted to copy, distribute and/or modify this document
+      under the terms of the GNU Free Documentation License, Version 1.1 or
+      any later version published by the Free Software Foundation; with no
+      <quote>Invariant Sections</quote>, <quote>Front-Cover Texts</quote> or
+      <quote>Back-Cover Texts</quote>, each as defined in the license. A copy
+      of the license can be found in the file
+      <filename>COPYING.DOC.txt</filename> included with jEdit.
+    </para>
+  </legalnotice>
+</bookinfo>
+
+<chapter id="intro"><title>Introduction</title>
+  <para>
+    This plugin provides a simple parser for diff files (aka patch files) in
+    unified and context format. It shows the paths of diffed files in the
+    structure tree.
+  </para>
+</chapter>
+
+<chapter id="display"><title>The structure tree</title>
+  <para>
+    The structure tree shows the full file paths in the same order as they
+    appear in the diff file.
+  </para>
+  <para>
+    If changes range over two files, both files will be shown with a
+    <code>&gt;</code> between them. If the new file is in the same directory
+    as the original, only its filename will be displayed.
+  </para>
+  <para>
+    Created or deleted files will be prepended with <code>+</code> and
+    <code>-</code> respectively.
+  </para>
+
+  <itemizedlist>
+    <para>
+      Git diff format extensions are recognized (in unified diff format):
+    </para>
+    <listitem><para>
+      Path prefixes <code>a/</code> and <code>b/</code> will be removed from
+      original and new file.
+    </para></listitem>
+    <listitem><para>
+      A path <code>/dev/null</code> will be interpreted as indicating file
+      creation or deletion.
+    </para></listitem>
+  </itemizedlist>
+</chapter>
+
+<chapter id="limitations"><title>Limitations</title>
+  <itemizedlist>
+    <para>
+      This very simple parser is written for real-world diff files and does
+      not handle possible but unusual situations:
+    </para>
+    <listitem><para>
+      Path separators are expected to be POSIX-style forward slashes
+      ("<code>/</code>").
+    </para></listitem>
+    <listitem><para>
+      The first header line must contain the original file. The new file must
+      be on the next line.
+    </para></listitem>
+    <listitem><para>
+      A file path on a preceding <code>Index:</code> line is not used if no
+      other path information is available. (As opposed to the patch tool).
+    </para></listitem>
+    <listitem><para>
+      The parser does not check if a file is actually a git diff. This may
+      have unexpected side effects if directories are named <code>a</code> and
+      <code>b</code>.
+    </para></listitem>
+  </itemizedlist>
+</chapter>
+
+<chapter id="license"><title>License and Acknowledgments</title>
+  <para>
+    Released under the <ulink url="http://opensource.org/licenses/MIT">MIT
+    License.</ulink>
+  </para>
+</chapter>
+</book>

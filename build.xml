@@ -1,0 +1,15 @@
+<!-- :tabSize=2:indentSize=2:noTabs=true: -->
+<project name="PatchfileSideKick" default="dist.nojavadoc">
+  <description>
+      Ant build file for the PatchfileSideKick plugin for jEdit.
+  </description>
+  <property file="../build.properties" />
+  <property file="build.properties" />
+  <property name="user-doc.xml" location="users-guide.xml" />
+  <import file="${build.support}/plugin-build.xml" />
+
+  <path id="project.class.path">
+    <pathelement location="${jedit.plugins.dir}/SideKick.jar" />
+    <pathelement location="${jedit.plugins.dir}/ErrorList.jar" />
+  </path>
+</project>
